@@ -20,11 +20,11 @@ to large numbers of MPI ranks.
 COMPILATION
 =============
 
-A Makefile is provided with the source code. Simply type `make" in the directory where you installed 
+A Makefile is provided with the source code. Simply type `make` in the directory where you installed 
 the source files in order to generate the 3 following executables:
-	stochastic-estimator.cg.exe
-	stochastic-estimator.pipelined_cg.exe
-	stochastic-estimator.bicgstab.exe 
+- stochastic-estimator.cg.exe
+- stochastic-estimator.pipelined_cg.exe
+- stochastic-estimator.bicgstab.exe 
 
 What you need to do:
 - provide a C++ compiler and its desired optimization options
@@ -45,6 +45,7 @@ A random number generator engine is thus required.
 Simple SEDI implementation makes use of the C++11 Mersenne Twister Algorithm (see the DistrRngStd.hpp class).
 Other random number generator engines may be used. Examples are provided within SEDI to switch from the regular
 C++11 RNG to:
+
 	- Use MKL's block-splitting RNG functionality to generate independent streams
 	- Provide parallel RNG using SPRNG2/SPRNG5 libraries
 	- Provide parallel RNG using the BOOST library
@@ -57,9 +58,10 @@ EXECUTION
 ===========
 
 In order to launch an execution of SEDI, here is a list of parameters that can be used:
-<sedi_progname.exe> -g NxNxN -p PxPxP [-s NSAMPLES] [-e TOL] [-m MAXITER] [-S] [-i]
+`sedi_progname.exe` -g NxNxN -p PxPxP [-s NSAMPLES] [-e TOL] [-m MAXITER] [-S] [-i]
 
 where:
+
 	-g NxNxN : size of the global 3D grid
 	-p PxPxP : decomposition into ranks
 	-s : number of samples for stochastic estimation
@@ -72,9 +74,9 @@ Examples of command line execution for a 128^3 grid on 64 MPI ranks:
 
 1. Fixed numbers of samples (eg. 5) and iterations (eg. 50)
 
-mpirun -n 64 stochastic-estimator.cg.exe -g 128x128x128 -p 4x4x4 -s 5 -e 1e-9 -m 50 -i	
+`mpirun -n 64 stochastic-estimator.cg.exe -g 128x128x128 -p 4x4x4 -s 5 -e 1e-9 -m 50 -i	`
 
 2. Fixed number of samples and run to convergence
 
-mpirun -n 64 stochastic-estimator.cg.exe -g 128x128x128 -p 4x4x4 -s 5 -i
+`mpirun -n 64 stochastic-estimator.cg.exe -g 128x128x128 -p 4x4x4 -s 5 -i`
 
