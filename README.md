@@ -58,6 +58,7 @@ EXECUTION
 ===========
 
 In order to launch an execution of SEDI, here is a list of parameters that can be used:
+
 `sedi_progname.exe` -g NxNxN -p PxPxP [-s NSAMPLES] [-e TOL] [-m MAXITER] [-S] [-i]
 
 where:
